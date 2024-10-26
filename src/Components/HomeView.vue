@@ -6,7 +6,7 @@
 
 <script lang="ts">
 export default {
-    methods: {
+      methods: {
         gotoAbout() {
             this.$router.push('/about');
         }

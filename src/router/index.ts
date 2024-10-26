@@ -1,5 +1,6 @@
+// index.ts
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../Components/HomeView.vue'
+import Home from '../Components/HomeView.vue' // Componente Home cargado de forma inmediata
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,14 +11,13 @@ const router = createRouter({
       component: Home
     },
     {
-      path: '/about',
+      path: '/about/:id',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../Components/AboutView.vue')
+      component: () => import('../Components/AboutView.vue'),  // Lazy load
+      props: route => ({ id: parseInt(route.params.id as string) })
     }
   ]
 })
 
 export default router
+
